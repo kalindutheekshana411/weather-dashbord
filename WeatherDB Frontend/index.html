@@ -56,7 +56,7 @@
             padding: 20px; color: white; text-align: center;
         }
 
-        /* Spinner Styles */
+    
         #loader {
             display: none;
             position: fixed;
@@ -80,9 +80,33 @@
     <div id="loader"><div class="spinner"></div></div>
 
     <div class="container" id="mainContainer">
+
+        <div style="background: #111; border-radius: 12px; padding: 12px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); width: fit-content; margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="12" fill="#FFC107"/>
+                    <g stroke="#FFC107" stroke-width="3">
+                        <line x1="24" y1="4" x2="24" y2="12" />
+                        <line x1="24" y1="36" x2="24" y2="44" />
+                        <line x1="4" y1="24" x2="12" y2="24" />
+                        <line x1="36" y1="24" x2="44" y2="24" />
+                        <line x1="10" y1="10" x2="16" y2="16" />
+                        <line x1="32" y1="32" x2="38" y2="38" />
+                        <line x1="10" y1="38" x2="16" y2="32" />
+                        <line x1="32" y1="16" x2="38" y2="10" />
+                    </g>
+                    <ellipse cx="40" cy="38" rx="14" ry="9" fill="#90CAF9"/>
+                    <ellipse cx="52" cy="38" rx="7" ry="5" fill="#BBDEFB"/>
+                    <ellipse cx="34" cy="44" rx="6" ry="4" fill="#E3F2FD"/>
+                </svg>
+                <span style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 2rem; font-weight: 600; color: #2196F3;">Weather Dashboard</span>
+            </div>
+            <div style="margin-top: 8px; text-align: center;">
+                <span id="date" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1rem; color: #fff; background: #222; border-radius: 6px; padding: 6px 16px; font-weight: 500; letter-spacing: 1px; display: inline-block;"></span>
+            </div>
+        </div>
         <div class="header">
-            <h1>Weather Dashboard</h1>
-            <p id="date"></p>
+            
         </div>
 
         <div class="search-box">
@@ -111,7 +135,7 @@
     </div>
 
     <script>
-        // ...existing code...
+        
         const KEY = '65906519346f9ed87f955ce9d865a762'; 
 
         window.onload = function() {
@@ -132,12 +156,12 @@
 
             showLoader();
             try {
-                // Fetch current weather
+                
                 const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=metric&appid=${KEY}`;
                 const response = await fetch(url);
                 const data = await response.json();
 
-                // Fetch forecast
+                
                 await fetchForecast({city: cityInput});
 
                 if (response.ok) {
@@ -197,7 +221,7 @@
         }
 
         function updateForecastUI(data) {
-            // OpenWeatherMap forecast returns 3-hour intervals, group by day
+            
             const days = {};
             data.list.forEach(item => {
                 const date = new Date(item.dt_txt);
@@ -205,12 +229,12 @@
                 if (!days[day]) days[day] = [];
                 days[day].push(item);
             });
-            // Get up to 5 days
+            
             const dayKeys = Object.keys(days).slice(0,5);
             let html = '';
             dayKeys.forEach(day => {
                 const items = days[day];
-                // Average values for the day
+                
                 let tempSum = 0, cloudSum = 0, rainSum = 0, popSum = 0;
                 let count = items.length;
                 items.forEach(i => {
@@ -221,9 +245,9 @@
                 });
                 const avgTemp = (tempSum/count).toFixed(1);
                 const avgCloud = Math.round(cloudSum/count);
-                const avgPop = Math.round((popSum/count)*100); // percent
+                const avgPop = Math.round((popSum/count)*100); 
                 const avgRain = rainSum.toFixed(1);
-                // Use first weather icon
+                
                 const icon = items[0].weather[0].icon;
                 const desc = items[0].weather[0].description;
                 html += `<div class="stat-card">
@@ -247,7 +271,7 @@
             document.getElementById('loader').style.display = 'none';
             document.getElementById('mainContainer').classList.remove('blur');
         }
-        // ...existing code...
+        
     </script>
 </body>
 </html>
