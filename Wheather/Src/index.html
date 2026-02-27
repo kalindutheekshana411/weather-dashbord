@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - Desktop</title>
+    <link rel="stylesheet" href="Style.css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>Weather Dashboard</h1>
+                <p>Advanced Weather Monitoring System</p>
+            </div>
+            <div class="header-right">
+                <div class="unit-toggle">
+                    <button class="active" onclick="toggleUnit('F')">°F</button>
+                    <button onclick="toggleUnit('C')">°C</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search for any city worldwide..." id="cityInput">
+            <button onclick="searchWeather()">🔍 Search</button>
+            <button class="location-btn" onclick="getLocation()">📍 Use My Location</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="main-weather">
+                <div class="location-info">
+                    <div class="location">Colombo, Sri Lanka</div>
+                    <div class="date">Thursday, January 22, 2026 • 2:45 PM</div>
+                </div>
+                
+                <div class="current-weather">
+                    <div class="temp-section">
+                        <div class="weather-icon">☀️</div>
+                        <div class="temp-info">
+                            <div class="temperature">72°</div>
+                            <div class="weather-desc">Clear Sky</div>
+                            <div class="high-low">H: 75° • L: 62°</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-sidebar">
+                <div class="time-widget">
+                    <div class="time">2:45 PM</div>
+                    <div class="timezone">Pacific Standard Time</div>
+                </div>
+
+                <div class="quick-stats">
+                    <h3>Quick Stats</h3>
+                    <div class="quick-stat-item">
+                        <span class="label">Sunrise</span>
+                        <span class="value">7:12 AM</span>
+                    </div>
+                    <div class="quick-stat-item">
+                        <span class="label">Sunset</span>
+                        <span class="value">5:28 PM</span>
+                    </div>
+                    <div class="quick-stat-item">
+                        <span class="label">Day Length</span>
+                        <span class="value">10h 16m</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="icon">🌡️</div>
+                <h3>Feels Like</h3>
+                <div class="value">68°</div>
+                <div class="subtext">Actual temperature</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">💧</div>
+                <h3>Humidity</h3>
+                <div class="value">65%</div>
+                <div class="subtext">Moderate level</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">💨</div>
+                <h3>Wind Speed</h3>
+                <div class="value">12 mph</div>
+                <div class="subtext">NW direction</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">🧭</div>
+                <h3>Pressure</h3>
+                <div class="value">1013</div>
+                <div class="subtext">mb</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">👁️</div>
+                <h3>Visibility</h3>
+                <div class="value">10 km</div>
+                <div class="subtext">Excellent</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">☀️</div>
+                <h3>UV Index</h3>
+                <div class="value">6</div>
+                <div class="subtext">High</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">☁️</div>
+                <h3>Cloud Cover</h3>
+                <div class="value">15%</div>
+                <div class="subtext">Mostly clear</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">🌧️</div>
+                <h3>Rain Chance</h3>
+                <div class="value">5%</div>
+                <div class="subtext">Very low</div>
+            </div>
+        </div>
+
+        <div class="forecast">
+            <h2>7-Day Extended Forecast</h2>
+            <div class="forecast-grid">
+                <div class="forecast-card">
+                    <div class="day">Friday</div>
+                    <div class="icon">⛅</div>
+                    <div class="temps">
+                        <span class="high">74°</span>
+                        <span class="low">62°</span>
+                    </div>
+                    <div class="condition">Partly Cloudy</div>
+                </div>
+                <div class="forecast-card">
+                    <div class="day">Saturday</div>
+                    <div class="icon">☁️</div>
+                    <div class="temps">
+                        <span class="high">70°</span>
+                        <span class="low">60°</span>
+                    </div>
+                    <div class="condition">Cloudy</div>
+                </div>
+                <div class="forecast-card">
+                    <div class="day">Sunday</div>
+                    <div class="icon">🌧️</div>
+                    <div class="temps">
+                        <span class="high">65°</span>
+                        <span class="low">58°</span>
+                    </div>
+                    <div class="condition">Light Rain</div>
+                </div>
+                <div class="forecast-card">
+                    <div class="day">Monday</div>
+                    <div class="icon">⛈️</div>
+                    <div class="temps">
+                        <span class="high">63°</span>
+                        <span class="low">56°</span>
+                    </div>
+                    <div class="condition">Thunderstorm</div>
+                </div>
+                <div class="forecast-card">
+                    <div class="day">Tuesday</div>
+                    <div class="icon">🌤️</div>
+                    <div class="temps">
+                        <span class="high">68°</span>
+                        <span class="low">59°</span>
+                    </div>
+                    <div class="condition">Partly Sunny</div>
+                </div>
+                <div class="forecast-card">
+                    <div class="day">Wednesday</div>
+                    <div class="icon">☀️</div>
+                    <div class="temps">
+                        <span class="high">73°</span>
+                        <span class="low">61°</span>
+                    </div>
+                    <div class="condition">Sunny</div>
+                </div>
+                <div class="forecast-card">
+                    <div class="day">Thursday</div>
+                    <div class="icon">☀️</div>
+                    <div class="temps">
+                        <span class="high">75°</span>
+                        <span class="low">63°</span>
+                    </div>
+                    <div class="condition">Clear</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Java.js/main.js"></script>
+</body>
+</html>
