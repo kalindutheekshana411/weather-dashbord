@@ -3,10 +3,9 @@ const axios = require("axios");
 const cors = require("cors");
 
 const app = express();
-const path = require("path"); // මෙය උඩින්ම එකතු කරන්න
+const path = require("path"); 
 
-// මෙය Middleware කොටසට එකතු කරන්න
-// 'back end' ෆෝල්ඩරයෙන් එළියේ තියෙන index.html පෙන්වීමට මෙය අවශ්‍ය වේ
+/
 app.use(express.static(path.join(__dirname, "..")));
 
 app.get("/", (req, res) => {
@@ -14,11 +13,11 @@ app.get("/", (req, res) => {
 });
 const PORT = 3000;
 
-// Middleware
-app.use(cors()); // Frontend එකට backend එක සමඟ සම්බන්ධ වීමට ඉඩ ලබා දෙයි
+
+app.use(cors()); 
 app.use(express.json());
 
-// OpenWeatherMap API Key (මෙතැනට ඔබේ Key එක ලබා දෙන්න)
+
 const API_KEY = "ac6d0ad270d8d12de1602df2fbcec21b"; 
 
 app.get("/api/weather", async (req, res) => {
@@ -29,11 +28,11 @@ app.get("/api/weather", async (req, res) => {
     }
 
     try {
-        // OpenWeather API එකට ඉල්ලීමක් යැවීම (Metric units පාවිච්චි කරන්නේ Celsius සඳහායි)
+        
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
         const response = await axios.get(url);
 
-        // අපට අවශ්‍ය දත්ත පමණක් පිරිසිදු කර Frontend එකට යැවීම
+       
         const weatherData = {
             name: response.data.name,
             country: response.data.sys.country,
