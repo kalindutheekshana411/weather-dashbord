@@ -56,6 +56,12 @@ We implemented the following branching strategy:
 - Implemented JavaScript to display weather data
 - Created and maintained README.md documentation
 
+# Weather Dashboard Application
+
+![Build Status](https://github.com/kalindutheekshana411/weather-dashboard/actions/workflows/ci.yml/badge.svg)
+
+A simple web application that allows users to search for a city and view the current weather information.
+
 Setup Instructions
 
  Prerequisites
