@@ -58,7 +58,7 @@ We implemented the following branching strategy:
 
 # Weather Dashboard Application
 
-![Build Status](https://github.com/kalindutheekshana411/weather-dashboard/actions/workflows/ci.yml/badge.svg)
+![Build Status](https://github.com/kalindutheekshana411/weather-dashbord/actions/workflows/ci.yml/badge.svg)
 
 A simple web application that allows users to search for a city and view the current weather information.
 
